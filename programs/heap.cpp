@@ -24,7 +24,7 @@ in		  out
 
 #include <iostream>
 
-template <typename T> struct Comparator {
+template <typename T> struct MyComparator {
   bool operator()(T &l, T &r) const {
     return l.P * (l.t + 1) > r.P * (r.t + 1);
   }
@@ -39,7 +39,7 @@ struct Process {
   int t;
 };
 
-template <typename MyStruct, typename Comparator> class Heap {
+template <typename MyStruct, typename Comparator = MyComparator<MyStruct> > class Heap {
 public:
   Heap() : size(0), real_size(0), arr(new MyStruct[0]) {}
   Heap(int n) : size(0), real_size(n), arr(new MyStruct[n]) {}
@@ -141,7 +141,7 @@ int processing(Heap<MyStruct, Comparator> &hp) {
 void task() {
   int n = 0;
   std::cin >> n;
-  Heap<Process, Comparator<Process>> hp(n);
+  Heap<Process> hp(n);
 
   for (int i = 0; i < n; i++) {
     int P, T = 0;
@@ -152,4 +152,6 @@ void task() {
   std::cout << processing(hp) << std::endl;
 }
 
-int main() { task(); }
+int main() { 
+  task(); 
+}

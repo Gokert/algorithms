@@ -33,9 +33,9 @@ in        out
 #include <queue>
 #include <vector>
 
-class list_graph {
+class ListGraph {
 public:
-  explicit list_graph(int num);
+  explicit ListGraph(int num);
 
   int vertexCount() const;
   void add(int from, int to, int weight);
@@ -46,20 +46,20 @@ private:
 
 };
 
-list_graph::list_graph(int num) : neighbors(num) {}
+ListGraph::ListGraph(int num) : neighbors(num) {}
 
-int list_graph::vertexCount() const { 
+int ListGraph::vertexCount() const { 
     return neighbors.size(); 
 }
 
-std::vector<std::pair<int, int>> list_graph::getNext(int vertex) const {
+std::vector<std::pair<int, int>> ListGraph::getNext(int vertex) const {
   if (vertex < 0 || vertex >= neighbors.size()) {
     return {};
   }
   return neighbors[vertex];
 }
 
-void list_graph::add(int from, int to, int weight) {
+void ListGraph::add(int from, int to, int weight) {
   if (to < 0 || to >= neighbors.size() || from < 0 ||
       from >= neighbors.size()) {
     return;
@@ -68,7 +68,7 @@ void list_graph::add(int from, int to, int weight) {
   neighbors[to].push_back(std::make_pair(weight, from));
 }
 
-int Dijk(list_graph &list_graph, int start, int end) {
+int Dijk(ListGraph &list_graph, int start, int end) {
   int inf = std::numeric_limits<int>::max();
   std::vector<int> top(list_graph.vertexCount(), -1);
   std::vector<int> length(list_graph.vertexCount(), inf);
@@ -104,7 +104,7 @@ void task() {
   int m = 0;
   std::cin >> n;
   std::cin >> m;
-  list_graph list_graph(n);
+  ListGraph list_graph(n);
 
   for (int i = 0; i < m; ++i) {
     int from, to, weight;
