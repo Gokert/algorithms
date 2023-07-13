@@ -100,4 +100,8 @@ void task() {
   delete[] numbers_B;
 }
 
-int main() { task(); }
+int main() { 
+  task();
+  
+  return 0;
+}

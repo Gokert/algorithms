@@ -39,8 +39,8 @@ struct Point {
 
 template <typename T> class Line {
 public:
-  Line() : size(2), buf_size(0), arr(new T[2]) {}
-  Line(int num) : size(num), buf_size(0), arr(new T[num]) {}
+  Line();
+  Line(int num);
   ~Line();
 
   void push(T &);
@@ -56,7 +56,11 @@ private:
   T *arr;
 };
 
-template <typename T> Line<T>::~Line() { delete[] arr; }
+template <typename T> Line<T>::Line(): size(2), buf_size(0), arr(new T[2]) {}
+
+template <typename T> Line<T>::Line(int num): size(2), buf_size(0), arr(new T[num]) {}
+
+template <typename T> Line<T>::~Line() { delete[] arr; };
 
 template <typename T> T *Line<T>::getArr() const { return arr; }
 
@@ -108,8 +112,7 @@ template <typename T> void Line<T>::newSize() {
 }
 
 template <typename T, typename Comparator = defaultComparator<T>>
-void mergeSort(T *arr, int left, int right, T *buffer,
-               Comparator comp = Comparator()) {
+void mergeSort(T *arr, int left, int right, T *buffer) {
 
   if (right - left < 2) {
     return;
@@ -124,21 +127,20 @@ void mergeSort(T *arr, int left, int right, T *buffer,
   int size = (right - left);
   int half = size / 2;
 
-  mergeSort(arr, left, left + half, buffer, comp);
-  mergeSort(arr, left + half, right, buffer, comp);
-  merge(arr, left, right, first, buffer, comp);
+  mergeSort(arr, left, left + half, buffer);
+  mergeSort(arr, left + half, right, buffer);
+  merge(arr, left, right, first, buffer);
 }
 
 template <typename T, typename Comparator = defaultComparator<T>>
-void merge(T *arr, int left, int right, bool first, T *buffer,
-           Comparator comp = Comparator()) {
+void merge(T *arr, int left, int right, bool first, T *buffer) {
   int i = 0;
   int j = 0;
   int size = right - left;
   int mid = size / 2;
 
   while (i < mid && j < size - mid) {
-    if (comp(arr[left + i], arr[left + mid + j])) {
+    if (arr[left + i] < arr[left + mid + j]) {
       buffer[i + j] = arr[left + i];
       i++;
     } else {
@@ -167,12 +169,13 @@ void merge(T *arr, int left, int right, bool first, T *buffer,
 }
 
 template <typename T, typename Comparator = defaultComparator<T>>
-void sort(Line<T> &ln, Comparator comp = Comparator()) {
+void sort(Line<T> &ln) {
   Line<T> buf(ln.getSize());
-  mergeSort(ln.getArr(), 0, ln.getSize(), buf.getArr(), comp);
+  mergeSort(ln.getArr(), 0, ln.getSize(), buf.getArr());
 }
 
-template <typename T> void inputFunction(Line<T> &ln, int &n) {
+template <typename T> 
+void inputFunction(Line<T> &ln, int &n) {
   for (int i = 0; i < n; i++) {
     int left, right = 0;
     std::cin >> left >> right;
@@ -193,9 +196,13 @@ void task() {
 
   inputFunction(ln, n);
 
-  sort(ln, defaultComparator<Point>());
+  sort(ln);
 
   std::cout << ln.calculation() << std::endl;
 }
 
-int main() { task(); }
+int main() { 
+  task();
+  
+  return 0;
+}

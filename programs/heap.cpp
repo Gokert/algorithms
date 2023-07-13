@@ -41,8 +41,8 @@ struct Process {
 
 template <typename MyStruct, typename Comparator = MyComparator<MyStruct> > class Heap {
 public:
-  Heap() : size(0), real_size(0), arr(new MyStruct[0]) {}
-  Heap(int n) : size(0), real_size(n), arr(new MyStruct[n]) {}
+  Heap();
+  Heap(int n);
 
   ~Heap();
 
@@ -61,6 +61,12 @@ private:
   MyStruct *arr;
   Comparator cmp;
 };
+
+template <typename MyStruct, typename Comparator>
+Heap<MyStruct, Comparator>::Heap() : size(0), real_size(0), arr(new MyStruct[0]) {}
+
+template <typename MyStruct, typename Comparator>
+Heap<MyStruct, Comparator>::Heap(int n) : size(0), real_size(n), arr(new MyStruct[n]) {}
 
 template <typename MyStruct, typename Comparator>
 bool Heap<MyStruct, Comparator>::isEmpty() {
@@ -153,5 +159,7 @@ void task() {
 }
 
 int main() { 
-  task(); 
+  task();
+  
+  return 0;
 }

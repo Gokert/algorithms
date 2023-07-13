@@ -38,15 +38,16 @@ public:
 };
 
 class ListGraph : public IGraph {
-private:
-  std::vector<std::vector<int>> list_graph;
-
 public:
   ListGraph(int count);
 
   void add(const int from, const int to) override;
   int pointCount() const override;
   std::vector<int> getNext(const int points) const override;
+  
+private:
+  std::vector<std::vector<int>> list_graph;
+
 
 };
 

@@ -31,23 +31,24 @@ in		out
 #include <iostream>
 
 class Queue {
-private:
-  int size;
-  int buf_size;
-  int head;
-  int tail;
-  int *buf;
-
 public:
-  Queue(int size)
-      : size(size), buf_size(0), head(0), tail(0), buf(new int[size]) {}
+  Queue(int size);
   ~Queue();
 
   bool isEmpty() const;
   void grow();
   void push(int);
   int pop();
+
+private:
+  int size;
+  int buf_size;
+  int head;
+  int tail;
+  int *buf;
 };
+
+Queue::Queue(int size) : size(size), buf_size(0), head(0), tail(0), buf(new int[size]) {} 
 
 bool Queue::isEmpty() const { return (head == tail || buf_size == 0); }
 
@@ -155,4 +156,8 @@ void task() {
   inputOutput(vector, n);
 }
 
-int main() { task(); }
+int main() { 
+  task();
+  
+  return 0;
+}

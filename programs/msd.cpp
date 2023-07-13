@@ -99,4 +99,8 @@ void task() {
   delete[] words;
 }
 
-int main() { task(); }
+int main() { 
+  task();
+  
+  return 0;
+}

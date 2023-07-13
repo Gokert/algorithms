@@ -41,9 +41,6 @@ public:
   void remove(const T &value);
 
 private:
-  Comparator comp;
-  Node *head;
-
   void changeNodes(Node *node);
   void changeHeight(Node *node);
 
@@ -56,8 +53,10 @@ private:
   Node *balance(Node *node);
   Node *remove(Node *node, const T &value);
   Node *minRemove(Node *node, Node *&min);
-
   T statistics(Node *node, const int k);
+
+  Comparator comp;
+  Node *head;
 };
 
 template <typename T, typename Comparator>
