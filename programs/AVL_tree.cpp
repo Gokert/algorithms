@@ -33,7 +33,7 @@ template <typename T, typename Comparator = std::less<T>> class AVLTree {
   };
 
 public:
-  AVLTree();
+  explicit AVLTree();
   ~AVLTree();
 
   T statistics(const int k);

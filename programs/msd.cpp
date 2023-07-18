@@ -1,7 +1,6 @@
 /*MSD for strings. Given an array of strings. The number of rows is not more
 than 105. Sort the array using the MSD bitwise sorting method by characters. The
-size of the alphabet is 256 characters. Last character of the string = '\0'.
-
+size of the alphabet is 256 characters. Last character of the string = '\0' .Do not use ready-made dynamic data structures.
 
 For example:
 in		out
@@ -29,7 +28,7 @@ void parseLine(std::string *words, int &count) {
   }
 }
 
-int getKey(char c) { return (int)c; }
+int getKey(char c) { return static_cast<int>(c); }
 
 void sort(std::string *words, int count, int index, int *buf) {
   for (int i = 0; i < count; i++)
@@ -73,9 +72,9 @@ void msdSort(std::string *words, int count, int radix = 0) {
 
   sort(words, count, radix, buf);
   for (int i = 0; i < BUF_; i++) {
-    int bufSize = buf[i + 1] - buf[i];
-    if (bufSize > 1) {
-      msdSort(words + buf[i], bufSize, radix + 1);
+    int buf_size = buf[i + 1] - buf[i];
+    if (buf_size > 1) {
+      msdSort(words + buf[i], buf_size, radix + 1);
     }
   }
 

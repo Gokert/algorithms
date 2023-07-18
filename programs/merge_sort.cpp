@@ -11,7 +11,7 @@ Print an integer — the length of the colored part.
 
 In the task, it is necessary to implement and use merge sort as a template
 function. The solution should support passing the compare function from outside.
-The total running time of the algorithm is O(n log n).
+The total running time of the algorithm is O(n log n). Do not use ready-made dynamic data structures.
 For example:
 
 in		out
@@ -20,7 +20,7 @@ in		out
 7 8
 2 5
 
-
+s
 */
 #include <iostream>
 
@@ -39,7 +39,7 @@ struct Point {
 
 template <typename T> class Line {
 public:
-  Line();
+  explicit Line();
   Line(int num);
   ~Line();
 

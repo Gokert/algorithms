@@ -33,11 +33,6 @@ stdin         stdout
 
 class HashTabel {
     struct Node {
-    std::string hash_key;
-    bool is_rem;
-    bool is_dem;
-    int hash;
-
     Node(std::string key, int hash): hash_key(std::move(key)), is_rem(false), is_dem(false), hash(hash) {}
     bool is_demmy() const { return is_dem; }
     Node() : hash_key(""), hash(-1), is_rem(true), is_dem(true) {}
@@ -48,6 +43,11 @@ class HashTabel {
       is_rem = false;
       is_dem = false;
     }
+
+    std::string hash_key;
+    bool is_rem;
+    bool is_dem;
+    int hash;
   };
 
 public:
@@ -71,6 +71,7 @@ private:
   int num_elements;
   const int hash_map = 71;
 };
+
 
 HashTabel::HashTabel(int size) : table(size), num_elements(0) {}
 

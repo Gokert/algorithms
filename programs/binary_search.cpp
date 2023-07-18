@@ -6,7 +6,7 @@ for each element of B[i]: O(log(k)). Attention! In this problem, for each B[i],
 you first need to determine the range for binary search with a size of order k
 using exponential search, and then do binary search in it. Input data format.
 The first line contains numbers n and m. In the second and third arrays A and B,
-respectively. For example:
+respectively. Do not use ready-made dynamic data structures. For example:
 
 in		      out
 4 3		      1 3 0

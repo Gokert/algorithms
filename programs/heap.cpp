@@ -12,7 +12,7 @@ t >= T is met, then the process is considered completed and removed from the
 queue. The solution to the problem involves the use of a heap implemented as a
 template class. It is required to count the number of processor switches. The
 solution should support passing the compare function from outside. The heap must
-be dynamic. For example:
+be dynamic. Do not use ready-made dynamic data structures. For example:
 
 in		  out
 3		    18
@@ -50,14 +50,15 @@ public:
   bool isEmpty();
   int display();
 
+
   void siftDown(int);
   void siftUp(int);
   MyStruct &operator[](int);
 
   int size;
-  int real_size;
 
 private:
+  int real_size;
   MyStruct *arr;
   Comparator cmp;
 };

@@ -51,7 +51,7 @@ private:
     Node *head;
     int min;
     int height;
-    Comparator comp = Comparator();
+    Comparator comp;
 };
 
 template<typename T, typename Comparator>
@@ -87,7 +87,8 @@ template<typename T, typename Comparator>
 BTree<T, Comparator>::BTree(int min)
     : head(nullptr)
     , min(min)
-    , height(0)
+    , height(0),
+    comp(Comparator())
 {
     if (min < 2) {
         min = 2;

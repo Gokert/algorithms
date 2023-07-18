@@ -12,8 +12,8 @@ For the queue, commands 2 and 3 are used. For the deck, all four commands are
 used. If the pop* command is given, then the number b is the expected value. If
 the pop command is called on an empty data structure, "-1" is expected. Output
 data format. It is required to print YES - if all the expected values matched.
-Otherwise, if at least one expectation was not justified, then print NO. For
-Example:
+Otherwise, if at least one expectation was not justified, then print NO. Do not use 
+ready-made dynamic data structures. For Example:
 
 in		out
 3
@@ -32,7 +32,7 @@ in		out
 
 class Queue {
 public:
-  Queue(int size);
+  explicit Queue(int size);
   ~Queue();
 
   bool isEmpty() const;
