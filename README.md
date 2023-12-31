@@ -1,8 +1,6 @@
 # Data Structures and Algorithms
 Tasks for the course "Algorithms and Data Structures" of the course in the VK Education Center.
 
-![Static Badge](https://img.shields.io/badge/gcc-11.4.0-green)
-
 1. [__Binary search__](https://github.com/Gokert/algorithms/blob/main/programs/binary_search.cpp)
     
     Given a sorted array of integers A[0..n-1] and an array of integers
